@@ -1,0 +1,105 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
+main{
+    min-height: 200px;
+    width: 60%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+.quotecont{
+    width: 90%;
+    position: relative;
+}
+.card-title{
+    font-size: 25px;
+}
+.card-subtitle{
+    color:cornflowerblue;
+    font-size: 20px;
+}
+.bookmark-icon{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 22px;
+    cursor: pointer;
+}
+.sidebar{
+    position: relative;
+    height: 80vh;
+    width: 30%;
+}
+.hidden{
+    display: none;
+}
+.bookmarkcancle{
+    position: absolute;
+    font-size: 20px;
+    top: 5px;
+    right: 7px;
+    cursor: pointer;
+}
+.listed{
+    cursor: pointer;
+    padding: 10px;
+    display: list-item !important;
+    /* width: 70%; */
+    
+}
+.listed p{
+    margin-bottom: 0 !important;
+}
+.listed.active{
+    /* background: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)); */
+    background:darkgrey;
+    color: black ;
+    pointer-events: none;
+}
+.listed:hover{
+    background: rgba(169, 169, 169, 0.342);
+}
+.listed.active span{
+    color: white !important;
+}
+.bookmarklist{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    gap:10px;
+    height: 65vh;
+    overflow-y: scroll;
+    list-style: outside;
+    list-style-type: decimal;
+    padding-left: 20px!important;
+
+}
+.ellipsis{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px;
+}
+h5{
+    text-align: center;
+}
+.nopointerevent{
+    pointer-events: none;
+}

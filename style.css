@@ -45,9 +45,9 @@ main{
     height: 80vh;
     width: 30%;
 }
-.hidden{
+/* .hidden{
     display: none;
-}
+} */
 .bookmarkcancle{
     position: absolute;
     font-size: 20px;

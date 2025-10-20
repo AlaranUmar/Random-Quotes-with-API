@@ -29,18 +29,43 @@
             Currentbookmark = {name, quote }
             showBookmarks()
 
+            const icon = document.querySelector(".bookmark-icon")
+            icon?.addEventListener("click", function () {
+                console.log("added")
+                Bookmarks.push(Currentbookmark)
+                localStorage.setItem("Bookmarks", JSON.stringify(Bookmarks))
+                icon.classList.remove("bi-bookmark-fill")
+                icon.classList.add("bi-bookmark");
+                icon.classList.add("nopointerevent");
+                showBookmarks()
+            })
+            const listed = document.querySelectorAll(".listed")
+            listed.forEach(e => {
+                    e.addEventListener("click", function () {
+                    listed.forEach(f => f.classList.remove("active"))
+                        e.classList.add("active")
+                        const quote_name = e.querySelector("p").querySelector("span")
+                        let quote_ = quote_name.getAttribute("quote")
+                        let name_ = quote_name.getAttribute("name")
+                        html = `
+                            <div class="quotecont card shadow-sm p-3 " quote="${quote_}" name="${name_}">
+                                <div class="card-body" >
+                                    <h5 class="card-title">"${quote_}"</h5>
+                                    <h6 class="card-subtitle">- ${name_}</h6>
+                                    <i class="bi bi-bookmark text-primary bookmark-icon nopointerevent"></i>
+                                </div>
+                            </div>`
+                        document.querySelector(".quotecont")?.remove()
+
+
+                        h2.insertAdjacentHTML("afterend", html)
+                    }
+                    )
+        
+            })
         })
     }
-    const icon = document.querySelector(".bookmark-icon")
-    icon?.addEventListener("click", function () {
-        Bookmarks.push(Currentbookmark)
-        localStorage.setItem("Bookmarks", JSON.stringify(Bookmarks))
-        icon.classList.remove("bi-bookmark-fill")
-        icon.classList.add("bi-bookmark");
-        icon.classList.add("nopointerevent");
-        alert("Bookmark added!")
-        showBookmarks()
-    })
+
 
     let Bookmarks = JSON.parse(localStorage.getItem("Bookmarks")) || [];
     const h2 = document.querySelector("h2")
@@ -64,48 +89,47 @@
 
 
 
-setInterval(() => getQuote(true), 30000)
-function showBookmarks() {
-        //     <div class="card listed">
-            //     <p>Nelson mandela. The future</p>
-    // </div>
-    bookmarklist.innerHTML = " "
-    Bookmarks.forEach(e => {
-        const cont = document.createElement("li")
-        cont.classList.add("card","listed")
-        const p = document.createElement("p")
-        p.classList.add("ellipsis")
-        p.innerHTML = `
-        <span class="fw-bold text-primary text-uppercase lh-sm" name="${e.name}" quote="${e.quote}">${e.name}:</span><br>
-        ${e.quote}
-        `
-        cont.appendChild(p)
-        bookmarklist.appendChild(cont)
-    })
-}
-const listed = document.querySelectorAll(".listed")
-listed.forEach(e => {
-    e.addEventListener("click", function () {
-        listed.forEach(f => f.classList.remove("active"))
-        e.classList.add("active")
-        const quote_name = e.querySelector("p").querySelector("span")
-        let quote_ = quote_name.getAttribute("quote")
-        let name_ = quote_name.getAttribute("name")
-        html = `
-            <div class="quotecont card shadow-sm p-3 " quote="${quote_}" name="${name_}">
-                <div class="card-body" >
-                    <h5 class="card-title">"${quote_}"</h5>
-                    <h6 class="card-subtitle">- ${name_}</h6>
-                    <i class="bi bi-bookmark text-primary bookmark-icon nopointerevent"></i>
-                </div>
-            </div>`
-        document.querySelector(".quotecont")?.remove()
-
-
-        h2.insertAdjacentHTML("afterend", html)
+    setInterval(() => getQuote(true), 30000)
+    function showBookmarks() {
+            //     <div class="card listed">
+                //     <p>Nelson mandela. The future</p>
+        // </div>
+        bookmarklist.innerHTML = " "
+        Bookmarks.forEach(e => {
+            const cont = document.createElement("li")
+            cont.classList.add("card","listed")
+            const p = document.createElement("p")
+            p.classList.add("ellipsis")
+            p.innerHTML = `
+            <span class="fw-bold text-primary text-uppercase lh-sm" name="${e.name}" quote="${e.quote}">${e.name}:</span><br>
+            ${e.quote}
+            `
+            cont.appendChild(p)
+            bookmarklist.appendChild(cont)
+        })
     }
-    )
-    
-})
+    const listed = document.querySelectorAll(".listed")
+    listed.forEach(e => {
+        e.addEventListener("click", function () {
+            listed.forEach(f => f.classList.remove("active"))
+            e.classList.add("active")
+            const quote_name = e.querySelector("p").querySelector("span")
+            let quote_ = quote_name.getAttribute("quote")
+            let name_ = quote_name.getAttribute("name")
+            html = `
+                <div class="quotecont card shadow-sm p-3 " quote="${quote_}" name="${name_}">
+                    <div class="card-body" >
+                        <h5 class="card-title">"${quote_}"</h5>
+                        <h6 class="card-subtitle">- ${name_}</h6>
+                        <i class="bi bi-bookmark text-primary bookmark-icon nopointerevent"></i>
+                    </div>
+                </div>`
+            document.querySelector(".quotecont")?.remove()
+
+
+            h2.insertAdjacentHTML("afterend", html)
+        }
+        )
+        
+    })
 // localStorage.clear()
-    

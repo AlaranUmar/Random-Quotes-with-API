@@ -8,8 +8,10 @@
         request.open("GET", url)
         request?.send()
 
-        const req = fetch(url)
-        const res = req.then((r) => r.json())
+        // const req = fetch(url)
+        // const res = req.then((r) => r.json()).then((data) => {
+            // console.log(data)
+        // })
 
         request.addEventListener("load", function () {
             const data = JSON.parse(this.responseText)
@@ -74,7 +76,7 @@ function showBookmarks() {
         const p = document.createElement("p")
         p.classList.add("ellipsis")
         p.innerHTML = `
-        <span class="fw-bold text-primary text-uppercase lh-sm" name="${e.name}" quote="${e.quote}">${e.name.split(" ")[0]}:</span><br>
+        <span class="fw-bold text-primary text-uppercase lh-sm" name="${e.name}" quote="${e.quote}">${e.name}:</span><br>
         ${e.quote}
         `
         cont.appendChild(p)

@@ -22,7 +22,7 @@
 
             spinner.classList.add("hidden")
 
-            const html = `
+            let html = `
                 <div class="quotecont card shadow-sm p-3 " quote="${quote}" name="${name}">
                     <div class="card-body" >
                         <h5 class="card-title">"${quote}"</h5>

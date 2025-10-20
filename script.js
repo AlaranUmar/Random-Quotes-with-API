@@ -3,6 +3,8 @@
         if (newquote) {
             document.querySelectorAll(".quotecont").forEach(q => q.remove())
         }
+            spinner.classList.remove("hidden")
+
         const url = `https://dummyjson.com/quotes/random`
         const request = new XMLHttpRequest()
         request.open("GET", url)
@@ -17,7 +19,10 @@
             const data = JSON.parse(this.responseText)
             const name = data.author
             const quote = data.quote
-            html = `
+
+            spinner.classList.add("hidden")
+
+            const html = `
                 <div class="quotecont card shadow-sm p-3 " quote="${quote}" name="${name}">
                     <div class="card-body" >
                         <h5 class="card-title">"${quote}"</h5>
@@ -75,6 +80,7 @@
     const bookmarklist = document.querySelector(".bookmarklist")
     const bookmarkcancle = document.querySelector(".bookmarkcancle")
     const bookmarkshow = document.querySelector(".bookmarkshow")
+    const spinner = document.querySelector(".spinner-container")
 
     let Currentbookmark = null
     btn.addEventListener("click", () => getQuote(true))
@@ -88,8 +94,8 @@
 
 
 
-
-    setInterval(() => getQuote(true), 30000)
+    getQuote(true)
+    setInterval(() => getQuote(true), 20000)
     function showBookmarks() {
             //     <div class="card listed">
                 //     <p>Nelson mandela. The future</p>
